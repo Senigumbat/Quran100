@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quran Vocabulary: Beginner Course</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;600&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--bg:#f3f6f4;--card:#ffffff;--ink:#14302a;--mute:#5a6f68;--line:#d5e0db;--accent:#0f6b5a;--accent-ink:#ffffff;--soft:#e4f1ec;--gold:#b7862b;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1a17;--card:#16261f;--ink:#e6f1ec;--mute:#9bb2a9;--line:#2a3f37;--accent:#4fc2a6;--accent-ink:#06201a;--soft:#1d3329;--gold:#e0b45c;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1a17;--card:#16261f;--ink:#e6f1ec;--mute:#9bb2a9;--line:#2a3f37;--accent:#4fc2a6;--accent-ink:#06201a;--soft:#1d3329;--gold:#e0b45c;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;line-height:1.5}
+.ar{font-family:"Amiri","Traditional Arabic",serif;direction:rtl}
+header{max-width:960px;margin:0 auto;padding:32px 20px 8px}
+h1{font-size:clamp(26px,5vw,38px);margin:0 0 6px;letter-spacing:-.01em}
+header p{margin:0;color:var(--mute);max-width:60ch}
+nav{max-width:960px;margin:0 auto;padding:12px 20px;display:flex;flex-wrap:wrap;gap:8px}
+nav button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 14px;font:inherit;font-size:14px;cursor:pointer}
+nav button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+nav button:focus-visible,.rv:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+main{max-width:960px;margin:0 auto;padding:8px 20px 48px}
+.lesson{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;margin-top:12px}
+.lesson h2{margin:0;font-size:22px}
+.lesson .sub{color:var(--mute);margin:2px 0 16px;font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.w{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--soft);text-align:center}
+.w .ar{font-size:30px;line-height:1.3;color:var(--accent)}
+.w .tr{font-size:13px;color:var(--mute);font-style:italic}
+.w .en{font-weight:600;margin-top:2px}
+h3{font-size:16px;margin:22px 0 8px}
+.ex{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.s{border-left:4px solid var(--gold);background:var(--bg);border-radius:10px;padding:10px 14px}
+.s .ar{font-size:26px;line-height:1.5}
+.s .en{color:var(--mute);font-size:15px}
+.pr{border:1px dashed var(--accent);border-radius:12px;padding:14px}
+.pr p{margin:0 0 10px;color:var(--mute);font-size:15px}
+.q{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0;border-top:1px solid var(--line)}
+.q:first-of-type{border-top:0}
+.q .ar{font-size:26px}
+.rv{border:1px solid var(--accent);color:var(--accent);background:transparent;border-radius:8px;padding:6px 12px;font:inherit;font-size:14px;cursor:pointer;min-width:120px;text-align:center}
+.rv.on{background:var(--accent);color:var(--accent-ink)}
+.ur{font-family:"Noto Nastaliq Urdu","Jameel Noori Nastaleeq","Urdu Typesetting",serif;direction:rtl;line-height:2.1}.w .ur{font-size:17px;margin-top:2px}.s .ur{font-size:18px}.rv .ur{font-size:15px;display:block}.rv{white-space:normal}footer{max-width:960px;margin:0 auto;padding:0 20px 40px;color:var(--mute);font-size:14px}
+</style>
+</head>
+<body>
+<header>
+<h1>Quran Vocabulary: Beginner Course</h1>
+<p>10 lessons, 10 words each, with English and Urdu (اردو) meanings. Words and short phrases only, no full verses. Learn the words, read the examples, then test yourself.</p>
+</header>
+<nav id="nav" aria-label="Lessons"></nav>
+<main id="main"></main>
+<footer>Tip: say each word aloud, then cover the English and try to recall it. Spellings are shown without vowel marks to keep things simple.</footer>
+<script>
+const L=[
+["Core words","The most common words in the Quran.",
+"الله|Allāh|God;رب|rabb|Lord;إله|ilāh|god, deity;رحمة|raḥma|mercy;كتاب|kitāb|book;يوم|yawm|day;ناس|nās|people;أرض|arḍ|earth;سماء|samāʾ|sky, heaven;ملك|malik|king",
+"الله رب الناس|God is Lord of the people.;رحمة الله عظيمة|God’s mercy is great.","هذا كتاب|This is a book."],
+["People and family","Words for people around us.",
+"رجل|rajul|man;امرأة|imraʾa|woman;ولد|walad|child, son;أب|ab|father;أم|umm|mother;أخ|akh|brother;ابن|ibn|son;قوم|qawm|a people, nation;نبي|nabī|prophet;رسول|rasūl|messenger",
+"هذا رجل|This is a man.;قال الأب|The father said.","الرسول نبي|The messenger is a prophet."],
+["Nature","Things you see in the world.",
+"شمس|shams|sun;قمر|qamar|moon;نجم|najm|star;ماء|māʾ|water;نار|nār|fire;جبل|jabal|mountain;بحر|baḥr|sea;ريح|rīḥ|wind;شجرة|shajara|tree;نهر|nahr|river",
+"الشمس والقمر|The sun and the moon.;الماء في النهر|The water is in the river.","هذا جبل|This is a mountain."],
+["Action words","Common verbs in the past tense.",
+"قال|qāla|he said;علم|ʿalima|he knew;عمل|ʿamila|he did, worked;جاء|jāʾa|he came;رأى|raʾā|he saw;سمع|samiʿa|he heard;ذهب|dhahaba|he went;أخذ|akhadha|he took;كان|kāna|he was;آمن|āmana|he believed",
+"آمن الناس|The people believed.;سمع وقال|He heard and said.","جاء الرسول|The messenger came."],
+["Describing words","Adjectives to describe things.",
+"كبير|kabīr|big;صغير|ṣaghīr|small;عظيم|ʿaẓīm|great;قليل|qalīl|few, little;كثير|kathīr|many, much;قريب|qarīb|near;بعيد|baʿīd|far;حسن|ḥasan|good, beautiful;حق|ḥaqq|truth, right;خير|khayr|good, better",
+"هذا كتاب كبير|This is a big book.;الحق قريب|The truth is near.","الماء كثير|The water is plentiful."],
+["Worship","Words about prayer and faith practice.",
+"صلاة|ṣalāh|prayer;زكاة|zakāh|charity;صيام|ṣiyām|fasting;حج|ḥajj|pilgrimage;دعاء|duʿāʾ|calling, supplication;ذكر|dhikr|remembrance;سجد|sajada|he prostrated;ركع|rakaʿa|he bowed;مسجد|masjid|mosque;دين|dīn|religion",
+"ركع وسجد|He bowed and prostrated.;هذا مسجد|This is a mosque.","الصلاة والزكاة|Prayer and charity."],
+["The hereafter","Life, death and what comes after.",
+"جنة|janna|garden, paradise;جهنم|jahannam|hell;آخرة|ākhira|the hereafter;دنيا|dunyā|this world;موت|mawt|death;حياة|ḥayāh|life;حساب|ḥisāb|reckoning;ميزان|mīzān|scale;أجر|ajr|reward;عذاب|ʿadhāb|punishment",
+"الآخرة خير|The hereafter is better.;الجنة أجر|Paradise is a reward.","الحياة الدنيا|The life of this world."],
+["Good qualities","Character and inner meanings.",
+"صبر|ṣabr|patience;شكر|shukr|gratitude;تقوى|taqwā|God-consciousness;إيمان|īmān|faith;عدل|ʿadl|justice;علم|ʿilm|knowledge;نور|nūr|light;هدى|hudā|guidance;ظلم|ẓulm|wrongdoing;صدق|ṣidq|truthfulness",
+"الصبر حسن|Patience is good.;الله نور|God is light.","العلم نور|Knowledge is light."],
+["Body and home","Things close to you.",
+"يد|yad|hand;عين|ʿayn|eye;قلب|qalb|heart;وجه|wajh|face;لسان|lisān|tongue;أذن|udhun|ear;رأس|raʾs|head;بيت|bayt|house;مال|māl|wealth;طعام|ṭaʿām|food",
+"اليد والعين|The hand and the eye.;هذا بيت كبير|This is a big house.","القلب والوجه|The heart and the face."],
+["Little words","Small words you will see everywhere.",
+"في|fī|in;من|min|from;إلى|ilā|to;على|ʿalā|on;مع|maʿa|with;لا|lā|no, not;نعم|naʿam|yes;هذا|hādhā|this;ذلك|dhālika|that;ما|mā|what",
+"الكتاب من الله|The book is from God.;نعم هذا حق|Yes, this is true.","لا إله|There is no god."]
+];
+const UW=[
+"اللہ;رب، پالنے والا;معبود;رحمت، مہربانی;کتاب;دن;لوگ;زمین;آسمان;بادشاہ".split(';'),
+"مرد، آدمی;عورت;بچہ، بیٹا;باپ;ماں;بھائی;بیٹا;قوم، لوگ;نبی;رسول، پیغام لانے والا".split(';'),
+"سورج;چاند;ستارہ;پانی;آگ;پہاڑ;سمندر;ہوا;درخت;نہر، دریا".split(';'),
+"اس نے کہا;اس نے جانا;اس نے کام کیا;وہ آیا;اس نے دیکھا;اس نے سنا;وہ گیا;اس نے لیا;وہ تھا;وہ ایمان لایا".split(';'),
+"بڑا;چھوٹا;عظیم، بہت بڑا;تھوڑا، کم;بہت، زیادہ;قریب;دور;اچھا، خوبصورت;سچ، حق;بہتر، بھلائی".split(';'),
+"نماز;زکوٰۃ;روزہ;حج;دعا، پکارنا;ذکر، یاد کرنا;اس نے سجدہ کیا;اس نے رکوع کیا;مسجد;دین".split(';'),
+"باغ، جنت;جہنم;آخرت;دنیا;موت;زندگی;حساب;ترازو;اجر، ثواب;عذاب".split(';'),
+"صبر;شکر;تقویٰ، خدا کا خوف;ایمان;انصاف;علم;روشنی، نور;ہدایت;ظلم;سچائی".split(';'),
+"ہاتھ;آنکھ;دل;چہرہ;زبان;کان;سر;گھر;مال، دولت;کھانا".split(';'),
+"میں;سے;کی طرف;پر;ساتھ;نہیں;ہاں;یہ;وہ;کیا".split(';')];
+const US=[
+"اللہ لوگوں کا رب ہے۔;اللہ کی رحمت بڑی ہے۔;یہ ایک کتاب ہے۔".split(';'),
+"یہ ایک مرد ہے۔;باپ نے کہا۔;رسول نبی ہے۔".split(';'),
+"سورج اور چاند۔;پانی دریا میں ہے۔;یہ ایک پہاڑ ہے۔".split(';'),
+"لوگ ایمان لائے۔;اس نے سنا اور کہا۔;رسول آیا۔".split(';'),
+"یہ ایک بڑی کتاب ہے۔;حق قریب ہے۔;پانی بہت ہے۔".split(';'),
+"اس نے رکوع اور سجدہ کیا۔;یہ ایک مسجد ہے۔;نماز اور زکوٰۃ۔".split(';'),
+"آخرت بہتر ہے۔;جنت ایک اجر ہے۔;دنیا کی زندگی۔".split(';'),
+"صبر اچھا ہے۔;اللہ نور ہے۔;علم نور ہے۔".split(';'),
+"ہاتھ اور آنکھ۔;یہ ایک بڑا گھر ہے۔;دل اور چہرہ۔".split(';'),
+"کتاب اللہ کی طرف سے ہے۔;ہاں، یہ حق ہے۔;کوئی معبود نہیں۔".split(';')];
+const nav=document.getElementById('nav'),main=document.getElementById('main');
+function el(t,c,h){const e=document.createElement(t);if(c)e.className=c;if(h!==undefined)e.textContent=h;return e}
+function show(i){
+ main.textContent='';
+ [...nav.children].forEach((b,j)=>b.setAttribute('aria-pressed',j===i));
+ const [title,sub,ws,ex,extra]=L[i];
+ const words=ws.split(';').map(x=>x.split('|'));
+ const sec=el('section','lesson');
+ sec.appendChild(el('h2','','Lesson '+(i+1)+': '+title));
+ sec.appendChild(el('p','sub',sub));
+ const g=el('div','grid');
+ words.forEach(([a,t,m],wi)=>{const c=el('div','w');c.appendChild(el('div','ar',a));c.appendChild(el('div','tr',t));c.appendChild(el('div','en',m));const uw=el('div','ur',UW[i][wi]);uw.lang='ur';c.appendChild(uw);g.appendChild(c)});
+ sec.appendChild(g);
+ sec.appendChild(el('h3','','Simple examples'));
+ const e=el('div','ex');
+ ex.split(';').concat(extra).forEach((s,si)=>{const [a,m]=s.split('|');const c=el('div','s');c.appendChild(el('div','ar',a));c.appendChild(el('div','en',m));const us=el('div','ur',US[i][si]);us.lang='ur';c.appendChild(us);e.appendChild(c)});
+ sec.appendChild(e);
+ sec.appendChild(el('h3','','Practice'));
+ const p=el('div','pr');
+ p.appendChild(el('p','','Say each one, then tap to check the meaning.'));
+ [0,3,6,9].map(k=>words[k]).concat([null]).forEach((w,k)=>{
+  const q=el('div','q');
+  const a=w?w[0]:ex.split(';')[0].split('|')[0];
+  const m=w?w[2]:ex.split(';')[0].split('|')[1];
+  const um=w?UW[i][[0,3,6,9][k]]:US[i][0];
+  q.appendChild(el('span','ar',a));
+  const b=el('button','rv','Show meaning');
+  b.onclick=()=>{b.textContent='';b.appendChild(document.createTextNode(m));const s=el('span','ur',um);s.lang='ur';b.appendChild(s);b.classList.add('on')};
+  q.appendChild(b);p.appendChild(q)});
+ sec.appendChild(p);
+ main.appendChild(sec);
+ try{location.hash='lesson'+(i+1)}catch(e){}
+}
+L.forEach((l,i)=>{const b=el('button','','Lesson '+(i+1));b.setAttribute('aria-pressed','false');b.onclick=()=>show(i);nav.appendChild(b)});
+let s=0;try{const m=/lesson(\d+)/.exec(location.hash);if(m)s=Math.min(9,Math.max(0,+m[1]-1))}catch(e){}
+show(s);
+</script>
+</body>
+</html>
